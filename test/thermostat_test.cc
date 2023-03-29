@@ -22,6 +22,10 @@ TEST(ThermostatUnit, Happy) {
     EXPECT_CALL(meter, GetTemperature())
         .Times(AtLeast(1))
         .WillOnce(Return(20)); 
+    EXPECT_CALL(controller, Heat(false))
+        .Times(1); 
+    EXPECT_CALL(controller, Cool(false))
+        .Times(1); 
 
     Thermostat stat(meter, controller); 
 }

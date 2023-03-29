@@ -25,6 +25,7 @@ add_executable(
   src/test/mock_thermometer.h
   src/test/mock_temperature_controller.h
   test/thermostat_test.cc
+  src/thermostat.cc
 )
 
 target_link_libraries(
