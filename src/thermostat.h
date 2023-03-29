@@ -12,6 +12,8 @@
  */
 class Thermostat {
 private:
+
+    //TODO: Not a good practice to add test classes as friend. Design another way to allow test cases to simulate thermometer callbacks.
     FRIEND_TEST(ThermostatUnit, HeatWhenLowTemp);
     FRIEND_TEST(ThermostatUnit, CoolWhenHighTemp);
     FRIEND_TEST(ThermostatUnit, NoActionWhenThermostatDisabled);
@@ -25,7 +27,11 @@ private:
     int lowTemperatureThreshold;  // Stores the minimum desired temperature within the room.
     bool isOn; // Store whether the thermostat should be on and controlling the room temperature. 
 
+    // Callback used to receive notification from the thermometer class when the temperature thresholds are breached.
     void ThermometerCallback(bool isHigh);
+
+    // Assistant function to facilitate code reuse. Checks the temperature from the thermometer and activates the 
+    // temperature controller if the temperature is outside the high-low threshold boundary conditions.
     void CheckTemperatureAndActManually();
 public:
     /**

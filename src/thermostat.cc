@@ -16,6 +16,8 @@ Thermostat::Thermostat(Thermometer &meter, TemperatureController &controller):
 }
 
 void Thermostat::ThermometerCallback(bool isHigh) {
+    // Only take action if the thermostat is enabled
+    // TODO: Check if thermometer allows callback to be de-registered
     if (this->isOn) {
         if (isHigh) {
             this->tempController.Cool(true);
@@ -30,6 +32,7 @@ void Thermostat::ThermometerCallback(bool isHigh) {
 
 bool Thermostat::SetTemperatureThresholds(int high, int low) {
     bool ret = false;
+    // Only take action if the thresholds are valid
     if (high > low) {
         this->thermometer.SetTemperatureThresholds(high,low);
         ret = true;
@@ -44,6 +47,7 @@ void Thermostat::EnableThermostat(bool on) {
     }
 }
 
+// TODO: Current design is sub-optimal, as when the temperature in the room is surpasses either threshold, the temperature controller is invoked and stays active until a new temperature alarm is triggered, causing then the reverse operation to be triggered from the temperature controller, in an unending cycle.
 void Thermostat::CheckTemperatureAndActManually() {
     int temp = this->thermometer.GetTemperature();
     if (temp < this->lowTemperatureThreshold) {

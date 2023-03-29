@@ -11,12 +11,12 @@ public:
     virtual ~TemperatureController() {}
     /**
      * Control whether the controller heats the room.
-     * @param: on True to start heating, false to stop. Automatically stops cooling when heating is started.
+     * @param: on True to start heating, false to stop.
      */
     virtual void Heat(bool on) = 0;
     /**
      * Control whether the controller cools the room.
-     * @param: on True to start cooling, false to stop. Automatically stops heating when cooling is started.
+     * @param: on True to start cooling, false to stop. 
      */
     virtual void Cool(bool on) = 0;
 };
