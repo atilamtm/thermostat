@@ -1,5 +1,7 @@
-#ifdef _THERMOMETER_H_
+#ifndef _THERMOMETER_H_
 #define _THERMOMETER_H_
+
+#include <functional>
 
 /**
  * @brief Thermometer class that represents a thermometer component. Just as a basis to build a thermostat.
@@ -7,9 +9,6 @@
  */
 class Thermometer {
 public:
-    /* Create a new Thermometer object.
-     */
-    virtual Thermometer() = 0;
 
     virtual ~Thermometer() {}
 
@@ -33,7 +32,7 @@ public:
      *        threshold.
      * @param callback A function that will be called whenever the temperature exceeds either threshold.
      */
-    virtual void RegisterCallback(void (*callback)(bool isHigh)) = 0;
+    virtual void RegisterCallback(std::function<void (bool)> callback) = 0;
 };
 
 #endif //_THERMOMETER_H_

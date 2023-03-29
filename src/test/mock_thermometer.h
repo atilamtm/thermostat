@@ -5,5 +5,5 @@ public:
 
     MOCK_METHOD(int, GetTemperature, (), (const, override));
     MOCK_METHOD(bool, SetTemperatureThresholds, (int high, int low), (override));
-    MOCK_METHOD(void, RegisterCallback, (void(*callback)(bool isHigh)), (override));
+    MOCK_METHOD(void, RegisterCallback, (std::function<void (bool)> callback), (override));
 };

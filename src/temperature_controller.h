@@ -7,11 +7,6 @@
  */
 class TemperatureController {
 public:
-    /**
-     *Create a new TemperatureController object.
-     * Default constructor.
-     */
-    virtual TemperatureController() = 0;
 
     virtual ~TemperatureController() {}
     /**
