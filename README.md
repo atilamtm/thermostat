@@ -1,2 +1,11 @@
 # thermostat
 Interview challenge to build a room thermostat
+
+#Compilation and run
+Go into project root directory
+Run:
+```
+cmake -S . -B build
+cmake --build build
+build/thermostat_test
+```
