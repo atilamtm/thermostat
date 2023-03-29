@@ -36,6 +36,7 @@ public:
      * @brief Configures a new threshold for the maximum and minimum desired temperatures in the room.
      * @param high The new high temperature threshold. 
      * @param low  The new low temperature threshold.
+     * @ret   True if the thresholds are valid (low < high), false otherwise.
      */
     bool SetTemperatureThresholds(int high, int low);
 
