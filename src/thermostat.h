@@ -26,6 +26,7 @@ private:
     bool isOn; // Store whether the thermostat should be on and controlling the room temperature. 
 
     void ThermometerCallback(bool isHigh);
+    void CheckTemperatureAndActManually();
 public:
     /**
      * @brief Creates a Thermostat object with references to a thermometer and a temperature controller.
