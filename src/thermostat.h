@@ -2,9 +2,9 @@
 #define _THERMOSTAT_H_
 
 #include <functional>
+#include <gtest/gtest_prod.h>
 #include "thermometer.h"
 #include "temperature_controller.h"
-
 
 /**
  * @brief Thermostat class receives temperature updates from the thermometer, and controls the temperature controller
@@ -12,6 +12,12 @@
  */
 class Thermostat {
 private:
+    FRIEND_TEST(ThermostatUnit, HeatWhenLowTemp);
+    FRIEND_TEST(ThermostatUnit, CoolWhenHighTemp);
+    FRIEND_TEST(ThermostatUnit, NoActionWhenThermostatDisabled);
+    FRIEND_TEST(ThermostatUnit, ReenableThermostat);
+    FRIEND_TEST(ThermostatUnit, HeatAndCoolSequence);
+
     Thermometer &thermometer; // Stores a reference to the thermometer that provides the room temperature info.
     TemperatureController &tempController; // Stores a reference to the temperature controller, that allows the 
                                           // room to be heated or cooled.
@@ -39,13 +45,13 @@ public:
      * @param low  The new low temperature threshold.
      * @ret   True if the thresholds are valid (low < high), false otherwise.
      */
-    bool SetTemperatureThresholds(int high, int low);
+    bool SetTemperatureThresholds(int high, int low) {}
 
     /**
      * @brief Controls whether the thermostat is enabled and controlling the room temperature.
      * @param on True - enables the thermostat, False - disables the thermostat.
      */
-    void EnableThermostat(bool on);
+    void EnableThermostat(bool on) {}
 };
 
 #endif //_THERMOSTAT_H_
