@@ -33,16 +33,11 @@ public:
     }
 
     /**
-     * @brief Configures a new threshold for the maximum desired temperature in the room.
-     * @param temp The new high temperature threshold. 
+     * @brief Configures a new threshold for the maximum and minimum desired temperatures in the room.
+     * @param high The new high temperature threshold. 
+     * @param low  The new low temperature threshold.
      */
-    bool SetHighTemperatureThreshold(int temp);
-
-    /**
-     * @brief Configures a new threshold for the lowest desired temperature in the room.
-     * @param temp The new low temperature threshold.
-     */
-    bool SetLowTemperatureThreshold(int temp);
+    bool SetTemperatureThresholds(int high, int low);
 
     /**
      * @brief Controls whether the thermostat is enabled and controlling the room temperature.
