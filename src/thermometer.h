@@ -9,13 +9,15 @@ class Thermometer {
 public:
     /* Create a new Thermometer object.
      */
-    Thermometer() = 0;
+    virtual Thermometer() = 0;
+
+    virtual ~Thermometer() {}
 
     /**
      * @brief Reads the currentn temperature and returns the value read.
      * @return The value of the current temperature. 
      */
-    int GetTemperature() = 0;
+    virtual int GetTemperature() const = 0;
 
     /**
      * @brief Configures new values for high and low temperature thresholds. If the current temperature
@@ -23,14 +25,14 @@ public:
      * @param high The new high temperature threshold.
      * @param low the new low temperature threshold.
      */
-    void SetTemperatureThresholds(int high, int low) = 0;
+    virtual void SetTemperatureThresholds(int high, int low) = 0;
 
     /**
      * @brief Configures a callback to be called when the temperature raises above the high threshold or below the low
      *        threshold.
      * @param callback A function that will be called whenever the temperature exceeds either threshold.
      */
-    void RegisterCallback(void (*callback)(bool isHigh)) = 0;
-}
+    virtual void RegisterCallback(void (*callback)(bool isHigh)) = 0;
+};
 
 #endif //_THERMOMETER_H_
