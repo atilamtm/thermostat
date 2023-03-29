@@ -104,6 +104,15 @@ TEST(ThermostatUnit, NoActionWhenThermostatDisabled) {
     MockThermometer meter;
     MockTemperatureController controller;
 
+    EXPECT_CALL(meter, SetTemperatureThresholds(_,_))
+        .Times(AtLeast(1))
+        .WillOnce(Return(true)); 
+    EXPECT_CALL(meter, RegisterCallback(_))
+        .Times(AtLeast(1)); 
+    EXPECT_CALL(meter, GetTemperature())
+        .Times(AtLeast(1))
+        .WillOnce(Return(20)); 
+
     EXPECT_CALL(controller, Heat(_))
         .Times(0); 
     EXPECT_CALL(controller, Cool(_))
